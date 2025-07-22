@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Bill Generator{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .navbar {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .card {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #28a745;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    footer {
+      background: #f8f9fa;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white px-4">
+    <a class="navbar-brand fw-bold text-success" href="/"> SmartBill Generator</a>
+    <div class="ms-auto">
+      <a class="btn btn-outline-success me-2" href="/"> Home</a>
+      <a class="btn btn-outline-success me-2" href="/form">➕ New Bill</a>
+      <a class="btn btn-outline-success me-2" href="/history"> History</a>
+      <a class="btn btn-outline-success me-2" href="/export"> Export</a>
+      <form action="/search" method="get" class="d-inline">
+        <input type="text" name="q" class="form-control d-inline-block" placeholder=" Search name" style="width: 150px;">
+      </form>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5 mb-4 content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Bill Generator App. All rights reserved.
+  </footer>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

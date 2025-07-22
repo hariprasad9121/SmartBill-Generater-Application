@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Bill Details{% endblock %}
+
+{% block content %}
+<div class="card shadow-lg">
+  <div class="card-header bg-success text-white">Generated Bill</div>
+  <div class="card-body">
+    <p><strong>Customer:</strong> {{ customer }}</p>
+    <p><strong>Items:</strong> {{ items }}</p>
+    <p><strong>Total Amount:</strong> ₹{{ total }}</p>
+    <p><strong>Date:</strong> {{ created_at }}</p>
+    <a href="/" class="btn btn-outline-primary">Back to Home</a>
+  </div>
+</div>
+{% endblock %}

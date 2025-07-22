@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Bill History{% endblock %}
+
+{% block content %}
+<div class="card shadow-lg">
+  <div class="card-header bg-success text-white">Bill History</div>
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="table-success">
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Items</th>
+          <th>Total</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bill in bills %}
+        <tr>
+          <td>{{ bill[0] }}</td>
+          <td>{{ bill[1] }}</td>
+          <td>{{ bill[2] }}</td>
+          <td>₹{{ bill[3] }}</td>
+          <td>{{ bill[4] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

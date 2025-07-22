@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Bill{% endblock %}
+
+{% block content %}
+<h3> Search Bill by Customer Name</h3>
+<form method="GET" action="/search">
+  <div class="input-group mb-3">
+    <input type="text" name="q" class="form-control" placeholder="Enter customer name" required>
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+
+{% if bills is defined %}
+<table class="table table-bordered">
+  <thead class="table-success">
+    <tr>
+      <th>ID</th>
+      <th>Customer</th>
+      <th>Items</th>
+      <th>Total</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for bill in bills %}
+    <tr>
+      <td>{{ bill[0] }}</td>
+      <td>{{ bill[1] }}</td>
+      <td>{{ bill[2] }}</td>
+      <td>₹{{ bill[3] }}</td>
+      <td>{{ bill[4] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

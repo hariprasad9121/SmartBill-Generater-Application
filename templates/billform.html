@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Generate Bill{% endblock %}
+
+{% block content %}
+<div class="card shadow-lg border-0">
+  <div class="card-header bg-success text-white">🧾 Generate Bill</div>
+  <div class="card-body">
+    <form method="POST" action="/generate_bill" onsubmit="return prepareBill()">
+      <div class="mb-3">
+        <label class="form-label">Customer Name</label>
+        <input type="text" class="form-control" name="customer" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mobile Number</label>
+        <input type="text" class="form-control" name="mobile" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Purchased Items</label>
+        <div id="items-container">
+          <div class="item-row d-flex gap-2 mb-2">
+            <input type="text" class="form-control" placeholder="Item name">
+            <input type="number" step="0.01" class="form-control" placeholder="Price" onchange="calculateTotal()">
+            <button type="button" class="btn btn-danger" onclick="removeItem(this)">✖</button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-outline-primary mt-2" onclick="addItem()">Add Item</button>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Total Item Amount</label>
+        <input type="text" id="grand_total" name="total" class="form-control" readonly required>
+      </div>
+
+      <input type="hidden" id="items" name="items">
+      <button type="submit" class="btn btn-success">Submit Bill</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function addItem() {
+  const row = document.createElement('div');
+  row.className = 'item-row d-flex gap-2 mb-2';
+  row.innerHTML = `
+    <input type="text" class="form-control" placeholder="Item name">
+    <input type="number" step="0.01" class="form-control" placeholder="Price" onchange="calculateTotal()">
+    <button type="button" class="btn btn-danger" onclick="removeItem(this)">✖</button>
+  `;
+  document.getElementById('items-container').appendChild(row);
+}
+
+function removeItem(btn) {
+  btn.parentElement.remove();
+  calculateTotal();
+}
+
+function calculateTotal() {
+  let total = 0;
+  document.querySelectorAll('#items-container input[type=number]').forEach(input => {
+    total += parseFloat(input.value || 0);
+  });
+  document.getElementById('grand_total').value = total.toFixed(2);
+}
+
+function prepareBill() {
+  const itemList = [];
+  document.querySelectorAll('#items-container .item-row').forEach(row => {
+    const name = row.children[0].value;
+    const price = row.children[1].value;
+    if (name && price) itemList.push(`${name} (₹${price})`);
+  });
+  document.getElementById('items').value = itemList.join(', ');
+  return true;
+}
+</script>
+{% endblock %}

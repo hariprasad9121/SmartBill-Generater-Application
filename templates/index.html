@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="text-center">
+  <div class="container py-5">
+    <h1 class="fw-bold text-success mb-4">SmartBill Generator</h1>
+   
+
+    <div class="card shadow-lg border-0 p-4 mx-auto bg-light" style="max-width: 500px; border-radius: 16px;">
+      <h4 class="text-dark mb-3">Start a New Bill</h4>
+      <a href="/form" class="btn btn-success btn-lg shadow-sm">➕ Generate Bill</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
