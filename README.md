@@ -10,12 +10,17 @@ Designed for simplicity and speed, it lets you manage customers, products, bills
 📜 Bill History: Browse, filter, and view past transactions in a sleek table.
 📱 Responsive UI: Experience seamless usage across mobile, tablet, and desktop devices.
 🚀 Modern Bootstrap Design: Enjoy a clean, user-friendly interface powered by Bootstrap.
+
+
 🛠️ Tech Stack
 Layer	Technology
 Frontend	HTML, CSS, Bootstrap
 Backend	Flask (Python)
 Database	SQLite
 Utilities	Flask-Cors, Gunicorn
+
+
+
 📂 Folder Structure
 Billing_Application_Flask/
 │
