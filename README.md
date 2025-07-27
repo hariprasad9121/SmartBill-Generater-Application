@@ -38,7 +38,7 @@ Billing_Application_Flask/
 │   ├── search.html
 │   └── history.html
 
-⚡ Quick Start
+Quick Start
 1️⃣ Clone the Repository
 git clone https://github.com/<your-username>/SmartBill-Generator-Application.git
 cd bill_generating-application
